@@ -1,0 +1,3 @@
+[submodule "blog/engine/jr"]
+	path = blog/engine/jr
+	url = https://github.com/dexygen/jr

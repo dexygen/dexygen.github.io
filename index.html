@@ -7,6 +7,14 @@
     <link rel="stylesheet" type="text/css" href="css/master.css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
     <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
+	<script>
+		setTimeout(function() {
+		    var mailtoLinkEl = document.getElementById('mailto-link');
+			var emailAddr = ["m", "o", "c", ".", "n", "e", "g", "y", "x", "e", "d", "@", "t", "l", "u", "s", "n", "o", "c"].reverse().join('');
+			mailtoLinkEl.innerText = emailAddr;
+			mailtoLinkEl.href = "mailto='" + emailAddr + "'";
+		});
+	</script>
 </head>
 <body>
 
@@ -21,6 +29,8 @@
             <div class="col-md-8 hidden-sm hidden-xs slideInRight">
                 <div class="main-menu">
                     <ul class="list-inline">
+                        <li><a href="#hello">Hello</a></li>
+                        <li><a href="#skills">Skills</a></li>
                         <li><a href="./blog">Occasionally Profound (Blog)</a></li>
                     </ul>
                 </div>
@@ -44,13 +54,15 @@
                     </div>
                     <div class="about-me-text">
                         <div class="opacity-box">
-                            <p>Database development since 1994, web development since 1999</p>
+                            <p>I am a long-time Web Developer located in the Dallas TX area. Long-term enough
+                                that I was a full-stack developer before the term full-stack was in use.
+                                Since 2009 I have been more focused on the front-end, though not entirely so.</p>
                         </div>
                     </div>
                     <div class="about-me-info">
                         <p>
                             <span class="span-title">Email</span>
-                            <span>consult@dexygen.com</span>
+                            <span><a id="mailto-link"></a></span>
                         </p>
                         <p>
                             <span class="span-title">Social</span>
@@ -64,6 +76,85 @@
                     <div class="about-btns">
                         <a href="./george_jempty_resume_winter_2019.pdf" class="site-btn gray-btn">Download Resume</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="section">
+    <div class="container">
+        <div class="row wave-bg">
+            <div class="zigzag wow slideInLeft">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 105 20" xml:space="preserve">
+                    <g>
+                        <rect class="st0" width="105" height="20"/>
+                        <g>
+                            <polyline class="st1" points="2.5,5 16.8,15 31.1,5 45.3,15 59.6,5 73.9,15 88.2,5 102.5,15   "/>
+                        </g>
+                    </g>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 105 20" xml:space="preserve">
+                    <g>
+                        <rect class="st0" width="105" height="20"/>
+                        <g>
+                            <polyline class="st1" points="2.5,5 16.8,15 31.1,5 45.3,15 59.6,5 73.9,15 88.2,5 102.5,15   "/>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+            <div class="col-md-4 wow slideInLeft">
+                <div class="section-sidebar">
+                    <h2><span class="point">Skills</span></h2>
+                    <div class="opacity-box">
+					    <ul>
+						    <li>Database developer on-and-off since 1994</li>
+							<li>Web developer (steadily) since 1999</li>
+							<li>Builder of web-based technology frameworks</li>
+							<li>Possessor of considerable analytic, speaking and writing skills</li>
+						</ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+				    <div id="skill-bullets-container" style="padding-top: 4px">
+						<div class="col-md-6 wow zoomIn">
+							<div class="advantages-box">
+								<h4>General Development and/or Back-end</h4>
+								<div class="opacity-box">
+									<ul>
+										<li>SQL</li>
+										<li>Java</li>
+										<li>Perl</li>
+										<li>Python</li>
+										<li>Tcl</li>
+										<li>Etc.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 wow zoomIn">
+							<hr class="mobile-hr">
+							<div class="advantages-box">
+								<h4>Front-end Web Development</h4>
+								<div class="opacity-box">
+									<ul>
+										<li>HTML, CSS, Javascript (the usual suspects)</li>
+										<li>Various Javascript frameworks, including
+											<ul>
+												<li>5 years with ExtJS; also some:</li>
+												<li>Backbone</li>
+												<li>Angular 1 (AngularJS) and Angular 2</li>
+												<li>Vue.js</li>
+												<li>React</li>
+											</ul>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
                 </div>
             </div>
         </div>

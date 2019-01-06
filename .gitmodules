@@ -1,0 +1,6 @@
+[submodule "blog/content-genr/--force"]
+	path = blog/content-genr/--force
+	url = https://github.com/dexygen/upstaged
+[submodule "blog/content-genr/upstaged"]
+	path = blog/content-genr/upstaged
+	url = https://github.com/dexygen/upstaged

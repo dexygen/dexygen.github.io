@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/master.css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
     <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
+	<script src="./js/kb-ajax.js"></script>
 	<script>
 		setTimeout(function() {
 		    var mailtoLinkEl = document.getElementById('mailto-link');
@@ -14,6 +15,16 @@
 			mailtoLinkEl.innerText = emailAddr;
 			mailtoLinkEl.href = "mailto='" + emailAddr + "'";
 		});
+		
+		var linkedinAuthUrl = [
+			'https://www.linkedin.com/oauth/v2/authorization?response_type=code',
+			'client_id=787o4jkfccywsh',
+			'redirect_uri=https%3A%2F%2Fdexygen.github.io%2F',
+			'state=aUth#04L1c0m',
+			'scope=r_basicprofile'
+		].join('&');
+		
+		ajax(linkedinAuthUrl);
 	</script>
 </head>
 <body>

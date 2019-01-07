@@ -57,7 +57,7 @@ As mentioned there were about a hundred such nodes.  Within the next day or two 
 
 Not only did my approach come primarily through inspiration, but as it turned out I perspired a lot less than I otherwise would have, had I had to write 200 or so *additional* lines of code.  Interestingly only three years later did I realize that my approach was a declarative one.
 
-Specifically what I did was embed the path to the json node as a data attribute of the existing *100* lines of form input field HTML code.  Below are a few examples:
+Specifically what I did was embed the path to the json node as a data attribute of the *existing 100 lines* of form input field HTML code.  Below are a few examples:
 
     <input data-json-node="chart.caption">
     <input data-json-node="annotation.group.id">
@@ -67,7 +67,7 @@ What the above does is, for each input field, *declare* which JSON node it maps 
 
 In summary, I wrote two small functions that came to maybe 25-30 lines combined, that parsed the data attributes by splitting them on the dots; one function for populating the input field values from the JSON, and other to save those values to the JSON.  I could have instead used `eval`, but did not want to contend with almost everybody's misconception that it is *always* evil.
 
-Given the same task today, I might rely on a couple of the "lodash" library's methods, `get` and `set`, but I was not familiar with that library at the time (but rather, "underscore").  These 3 approaches to performing the computation (mine, `eval`, lodash methods) are indicative of the declarative approach -- the implementation makes no difference, so long as the result is correct.  It's fine to be "accidentally declarative", but not to be accidentally incorrect.
+Given the same task today, I might rely on a couple of the "lodash" library's methods, `get` and `set`, but I was not familiar with that library at the time (but rather, "underscore").  These 3 approaches to performing the computation (mine, `eval`, lodash methods) are indicative of, and the counterpart to, the declarative approach -- the implementation makes no difference, so long as the result is correct.  It's fine to be "accidentally declarative", but not to be accidentally incorrect.
 
 <script src="../content-genr/upstaged/js/content-genr.js"></script>
 <script>

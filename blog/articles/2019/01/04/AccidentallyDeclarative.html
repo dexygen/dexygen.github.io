@@ -1,0 +1,84 @@
+[enable HTML to render MarkDown]: <pre>
+
+# Accidentally Declarative:
+## An Approach for Mapping Input Field Values to/from JSON
+
+"Programming paradigms are a way to classify programming languages based on their features. Languages can be classified into multiple paradigms" [thus quoth Wikipedia](https://en.wikipedia.org/wiki/Programming_paradigm).  The same article goes on to list what are apparently considered the two most common paradigms:
+
+1. Imperative ("in which the programmer instructs the machine how to change its state")
+2. Declarative ("in which the programmer merely declares properties of the desired result, but not how to compute it")
+
+From the title of this article can you guess which one I'll be focused on ;)  In any case, there is something implicit in the above description of declarative programming: the programmer may not specify how to compute the result, but it *is* computed nonetheless.
+
+SQL, for interacting with databases, is a prime example of a declarative programming language -- it is for instance mentioned as the first example in this [wikipedia article](https://en.wikipedia.org/wiki/Declarative_programming).  Consider the following SQL "Select" statement:
+
+	SELECT foo FROM bar
+
+This declares that the desired result is all of the "foo" values from the table "bar", but does not specify how to compute that result.  That's the database engine's job, be it Oracle, SQL Server, MySQL, etc.
+
+In late 2015 I had the job of creating a form with about a hundred input fields that all corresponded to nodes in a JSON object.  I knew that I did not want to have write code such as the following to manage them all.
+
+Populating from JSON:
+
+	field001.value = json.obj.field001;
+	field002.value = json.obj.field002;
+	field003.value = json.obj.field003;
+	// A hundred times over, ugh :(
+
+Saving to JSON:
+
+	json.obj.field001 = field001.value;
+	json.obj.field002 = field002.value;
+	json.obj.field003 = field003.value;
+	// Another hundred times over, double ugh		
+
+
+Needless to say the above is not necessarily a particularly accurate representation of the JSON.  Rather it was for a charting package, and the below is a snippet derived from one of their webpages:
+
+	{
+   		"chart":{
+      			"caption":"Average Monthly Temperature in Texas",
+      			"yAxisName":"Average Monthly Temperature"
+   		},
+   		"annotation":{
+      			"group":{
+         			"id":"anchor-highlight",
+         			"item":{
+            				"id":"high-star",
+            				"type":"circle"
+         			}
+      			}
+   		}
+	}
+
+As mentioned there were about a hundred such nodes.  Within the next day or two of realizing what was entailed, a "shower thought" (if you will) occurred to me, the antithesis of Thomas Edison's famous quip:
+
+"Genius is one percent inspiration and ninety-nine percent perspiration."
+
+Not only did my approach come primarily through inspiration, but as it turned out I perspired a lot less than I otherwise would have, had I had to write 200 or so *additional* lines of code.  Interestingly only three years later did I realize that my approach was a declarative one.
+
+Specifically what I did was embed the path to the json node as a data attribute of the *existing 100 lines* of form input field HTML code.  Below are a few examples:
+
+    <input data-json-node="chart.caption">
+    <input data-json-node="annotation.group.id">
+    <input data-json-node="annotation.group.item.type">
+
+What the above does is, for each input field, *declare* which JSON node it maps to, without performing the actual computation.  Perhaps I didn't realize my approach was declarative because I actually *did* have to write the computational code.  I was in a full stack role, and it was not unlike some other such positions I've had in which I not only wrote the middle/back-tier code for supplying RESTful services, but also the front end code for consuming them.
+
+In summary, I wrote two small functions that came to maybe 25-30 lines combined, that parsed the data attributes by splitting them on the dots; one function for populating the input field values from the JSON, and other to save those values to the JSON.  I could have instead used `eval`, but did not want to contend with almost everybody's misconception that it is *always* evil.
+
+Given the same task today, I might rely on a couple of the "lodash" library's methods, `get` and `set`, but I was not familiar with that library at the time (but rather, "underscore").  These 3 approaches to performing the computation (mine, `eval`, lodash methods) are indicative of, and the counterpart to, the declarative approach -- the implementation makes no difference, so long as the result is correct.  It's fine to be "accidentally declarative", but not to be accidentally incorrect.
+
+<script src="../../../../content-genr/upstaged/js/content-genr.js"></script>
+<script>
+	upstaged.run({
+		afterRender: function() {
+		  document.title = "Dexygen: Occasionally Profound";
+		},
+		pathPrefix: "../../../../content-genr/upstaged/",
+		styles: [
+			'themes/dexygen.css',
+			'themes/code.css'
+		]
+	});
+</script>

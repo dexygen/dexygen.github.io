@@ -124,6 +124,11 @@ img {
     -webkit-box-shadow: 0 5px 10px rgba(37, 37, 37, 0.1);
             box-shadow: 0 5px 10px rgba(37, 37, 37, 0.1);
     border-bottom-color: transparent; }
+	
+.section-anchor {
+	position: relative; 
+	top: -12.25rem
+}
 
 .point:after {
   content: '.'; }

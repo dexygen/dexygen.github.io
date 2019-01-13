@@ -1,18 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexygen: Software, Powerful and Simple</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/master.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="row">
+		    <div class="col-md-1"></div>
+            <div class="col-md-8 col-xs-8 slideInLeft">
+			    <span style="float: left"><img src="../assets/imgs/dexygen-min.PNG"></span>
+                <div class="logo">
+                    <h3><span>Dexygen: Occasionally Profound</h3></span>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-sm hidden-xs slideInRight">
+                <div class="main-menu">
+                    <ul class="list-inline">
+					    <li><a href="../">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+			<div class="col-md-1"></div>
+        </div>
+    </div>
+</header>
+
+<section id="hello" class="section">
+    <span id="very-top" class="section-anchor">&nbsp;</span>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+			
+                <div id="mdHolder">
 [enable HTML to render MarkDown]: <pre>
 
 # Dexygen: Occasionally Profound
 - [Why ReactJS is a Framework, not a Library: If ReactJS lets you program declaratively, it *must* be a framework](./articles/2019/01/09/WhyReactjsIsAFrameworkNotALibrary.html)
 - [Accidentally Declarative: An Approach for Mapping Input Field Values to/from JSON](./articles/2019/01/04/AccidentallyDeclarative.html)
+                </div>
+				
+            </div>
+        </div>
+    </div>
+</section>
 
 <script src="./content-genr/upstaged/js/content-genr.js"></script>
 <script>
 	upstaged.run({
-		afterRender: function() {
-		  document.title = "Dexygen: Occasionally Profound";
-		},
+	    mdHolderQuerySel: '#mdHolder',
 		pathPrefix: "./content-genr/upstaged/",
 		styles: [
 			'themes/dexygen.css'
 		]
 	});
 </script>
+
+</body></html>

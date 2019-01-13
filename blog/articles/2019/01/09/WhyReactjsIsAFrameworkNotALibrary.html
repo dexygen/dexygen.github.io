@@ -1,7 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexygen: Software, Powerful and Simple</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../assets/css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
+    <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="row">
+		    <div class="col-md-1"></div>
+            <div class="col-md-8 col-xs-8 slideInLeft">
+			    <span style="float: left"><img src="../../../../../assets/imgs/dexygen-min.PNG"></span>
+                <div class="logo">
+                    <h3><span>Dexygen: Occasionally Profound</h3></span>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-sm hidden-xs slideInRight">
+                <div class="main-menu">
+                    <ul class="list-inline">
+					    <li><a href="../../../../../blog">Blog</a></li>
+					    <li><a href="../../../../../">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+			<div class="col-md-1"></div>
+        </div>
+    </div>
+</header>
+
+<section id="hello" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+			
+
+                <div id="mdHolder">
 [enable HTML to render MarkDown]: <pre>
 
 # Why ReactJS is a Framework, not a Library:
-##If ReactJS lets you program declaratively, it *must* be a framework
+### If ReactJS lets you program declaratively, it *must* be a framework
 
 I have read one too many times that React "is a library", presumably by those who have an agenda to make it sound simpler than alternatives, or those who are merely parroting.  But we also always read that React lets you create web UI's "declaratively".  As we will see, these two statements are at odds with one another.
 
@@ -10,13 +52,21 @@ In my immediately previous post, ["Accidentally Declarative"](https://dev.to/dex
 As to the difference between a library and a framework, I think this is very well stated in a couple of answers to a particular Stackoverflow question.  The [first of these answers](https://stackoverflow.com/a/148789/34806) states that "A library is a module that you call from your code, and a framework is a module which calls your code.".
 
 The [second answer I like](https://stackoverflow.com/a/233765/34806) is even more succinct, but I like one of the comments in particular: "In Soviet Russia, framework calls you" :)  The logical conclusion then is, that if when you write declarative code another system/framework calls your code, and if React lets you create UI's declaratively, then React is a framework, not a library -- no matter what anybody would have you think, or repeats without themselves thinking.
+                </div>
+				
 
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/tags">
+  ['foo','bar','baz'];
+</script>
 <script src="../../../../content-genr/upstaged/js/content-genr.js"></script>
 <script>
 	upstaged.run({
-		afterRender: function() {
-		  document.title = "Dexygen: Occasionally Profound";
-		},
+		mdHolderQuerySel: '#mdHolder',
 		pathPrefix: "../../../../content-genr/upstaged/",
 		styles: [
 			'themes/dexygen.css',
@@ -24,3 +74,5 @@ The [second answer I like](https://stackoverflow.com/a/233765/34806) is even mor
 		]
 	});
 </script>
+
+</body></html>

@@ -1,10 +1,49 @@
-<script type="text/tags">
-  ['foo','bar','baz'];
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexygen: Software, Powerful and Simple</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../assets/css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">
+    <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="row">
+		    <div class="col-md-1"></div>
+            <div class="col-md-8 col-xs-8 slideInLeft">
+			    <span style="float: left"><img src="../../../../../assets/imgs/dexygen-min.PNG"></span>
+                <div class="logo">
+                    <h3><span>Dexygen: Occasionally Profound</h3></span>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-sm hidden-xs slideInRight">
+                <div class="main-menu">
+                    <ul class="list-inline">
+					    <li><a href="../../../../../blog">Blog</a></li>
+					    <li><a href="../../../../../">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+			<div class="col-md-1"></div>
+        </div>
+    </div>
+</header>
+
+<section id="hello" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+			
+
+                <div id="mdHolder">
 [enable HTML to render MarkDown]: <pre>
 
 # Accidentally Declarative:
-## An Approach for Mapping Input Field Values to/from JSON
+### An Approach for Mapping Input Field Values to/from JSON
 
 "Programming paradigms are a way to classify programming languages based on their features. Languages can be classified into multiple paradigms" [thus quoth Wikipedia](https://en.wikipedia.org/wiki/Programming_paradigm).  The same article goes on to list what are apparently considered the two most common paradigms:
 
@@ -71,13 +110,21 @@ What the above does is, for each input field, *declare* which JSON node it maps 
 In summary, I wrote two small functions that came to maybe 25-30 lines combined, that parsed the data attributes by splitting them on the dots; one function for populating the input field values from the JSON, and other to save those values to the JSON.  I could have instead used `eval`, but did not want to contend with almost everybody's misconception that it is *always* evil.
 
 Given the same task today, I might rely on a couple of the "lodash" library's methods, `get` and `set`, but I was not familiar with that library at the time (but rather, "underscore").  These 3 approaches to performing the computation (mine, `eval`, lodash methods) are indicative of, and the counterpart to, the declarative approach -- the implementation makes no difference, so long as the result is correct.  It's fine to be "accidentally declarative", but not to be accidentally incorrect.
+                </div>
+				
 
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/tags">
+  ['foo','bar','baz'];
+</script>
 <script src="../../../../content-genr/upstaged/js/content-genr.js"></script>
 <script>
 	upstaged.run({
-		afterRender: function() {
-		  document.title = "Dexygen: Occasionally Profound";
-		},
+		mdHolderQuerySel: '#mdHolder',
 		pathPrefix: "../../../../content-genr/upstaged/",
 		styles: [
 			'themes/dexygen.css',
@@ -85,3 +132,5 @@ Given the same task today, I might rely on a couple of the "lodash" library's me
 		]
 	});
 </script>
+
+</body></html>

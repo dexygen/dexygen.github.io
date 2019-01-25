@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexygen: Software, Powerful and Simple</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../assets/css/master.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="row">
+		    <div class="col-md-1"></div>
+            <div class="col-md-8 col-xs-8 slideInLeft">
+			    <span style="float: left"><img src="../../../../../assets/imgs/dexygen-min.PNG"></span>
+                <div class="logo">
+                    <h3><span>Dexygen: Occasionally Profound</h3></span>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-sm hidden-xs slideInRight">
+                <div class="main-menu">
+                    <ul class="list-inline">
+					    <li><a href="../../../../../blog">Blog</a></li>
+					    <li><a href="../../../../../">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+			<div class="col-md-1"></div>
+        </div>
+    </div>
+</header>
+
+<section id="hello" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+			
+
+                <div id="mdHolder">
+[enable HTML to render MarkDown]: <pre>
+
+#Form Validation: You're Doing it Wrong (Part Two)
+
+This is a follow-on to [yesterday's post of mine](https://dev.to/dexygen/form-validation-youre-likely-doing-it-wrong-37h9).  Again I will be referring to the same excellent article on [the sorry state of form validation](https://baymard.com/blog/inline-form-validation), though I do have a quibble with the following assertion:
+
+"The validity of each field input should be checked when the user leaves the field or reaches the intended input length."
+
+Actually I think their more general position a bit above this is the better guideline:
+
+"The validity of the input should not be checked until the user has had a chance to fully type *a valid input*."  
+
+Here the emphasis is mine; I think whether an input is valid can sometimes be determined *before* "the user leaves the field or reaches the intended input length."  To that end I've created [another gist](https://gist.github.com/dexygen/b0225fffe4e6d3b39c088a72e431e0dd), this one demonstrating validating a zip code with an optional dash plus four digits (zip-plus-four) *both* while the user types, *and* when they move away from the field.
+
+Specifically I use two slightly different "regular expressions" to achieve this, the one for matching as the user types permitting zero to five beginning digits with an optional dash and then zero to four digits, the one for matching when the user leaves the field requiring *precisely* five beginning digits, and then an optional dash and *precisely* four digits -- the actual input as it will be needed for submission in the long run:
+
+      const keyupRegex = new RegExp("^\\d{0,5}(-\\d{0,4})?$");
+      const blurRegex = new RegExp("^\\d{5}(-\\d{4})?$"); 
+
+Here is a screenshot showing that the user can type a partially correct entry without getting nagged:
+
+![](https://thepracticaldev.s3.amazonaws.com/i/i83pss7rs67wkj9vck7x.png)
+
+But if they blur off the zip field by clicking the checkbox....
+
+![](https://thepracticaldev.s3.amazonaws.com/i/s3qvzllm3lrl2is5c6kv.PNG)
+
+Then though, if the user re-enters the zip field and starts typing something that could potentially be valid (another digit), the error message goes away!
+
+![](https://thepracticaldev.s3.amazonaws.com/i/yybz5d18mj85m72qb5x0.png)
+
+Finally if they finish entering a valid input and uncheck the checkbox, likewise the error is lacking, as it should be.
+
+![](https://thepracticaldev.s3.amazonaws.com/i/xmomkxodue8nm19l19g8.PNG)
+
+This technique could likewise be used for email addresses though the regular expressions will be more complicated.  Hope you learned as much as I did!
+                </div>
+				
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/tags">
+  ['foo','bar','baz'];
+</script>
+<script src="../../../../content-genr/upstaged/js/content-genr.js"></script>
+<script>
+	upstaged.run({
+		mdHolderQuerySel: '#mdHolder',
+		pathPrefix: "../../../../content-genr/upstaged/",
+		styles: [
+			'themes/dexygen.css',
+			'themes/code.css'
+		]
+	});
+</script>
+
+</body></html>

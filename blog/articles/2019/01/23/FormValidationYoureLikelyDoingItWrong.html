@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexygen: Software, Powerful and Simple</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../assets/css/master.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="row">
+		    <div class="col-md-1"></div>
+            <div class="col-md-8 col-xs-8 slideInLeft">
+			    <span style="float: left"><img src="../../../../../assets/imgs/dexygen-min.PNG"></span>
+                <div class="logo">
+                    <h3><span>Dexygen: Occasionally Profound</h3></span>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-sm hidden-xs slideInRight">
+                <div class="main-menu">
+                    <ul class="list-inline">
+					    <li><a href="../../../../../blog">Blog</a></li>
+					    <li><a href="../../../../../">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+			<div class="col-md-1"></div>
+        </div>
+    </div>
+</header>
+
+<section id="hello" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+			
+
+                <div id="mdHolder">
+[enable HTML to render MarkDown]: <pre>
+
+#Form Validation: You're (Likely) Doing it Wrong
+
+First of all, run, don't walk, and read the following about ["Usability Testing of Inline Form Validation"](https://baymard.com/blog/inline-form-validation), it goes into far more general detail, though I may follow up with a post about a morsel they don't cover.  The two main categories of issues the article is concerned with are:
+
+1. "Premature Inline Validation", and
+2. "Outdated Error Messages"
+
+Here I am chiefly concerned with the first pitfall.  In fact if you look at some code I wrote, you will see I avoid the second, specifically the line setting the error message (back to) empty: `errEl.innerHTML = '';`
+
+	let fnameEl = document.getElementById('fname');
+	let lnameEl = document.getElementById('lname');
+	
+	function confirmEntry() {
+		let errEl = document.getElementById('err4-' + this.id);
+		
+		if (this.value) {
+			errEl.innerHTML = '';
+		}
+		else {
+			errEl.innerHTML = 'The above field is required';
+		}
+	}
+	
+	fnameEl.focus();
+	
+	fnameEl.addEventListener('blur', function() {
+		confirmEntry.call(this);
+	});
+	
+	lnameEl.addEventListener('blur', function() {
+		confirmEntry.call(this);
+	});
+
+Unfortunately though, as written, the above will correctly display an error if the first field is tabbed through, but then if trying to shift-tab back to correct that error, it will annoyingly display an error for the second field.  This sort of thing is covered in the above-referenced article.
+
+![](https://thepracticaldev.s3.amazonaws.com/i/8o4yk12z98mtwfgl32t0.PNG)
+
+A solution seems to be to add some "state", the following is quick and dirty and probably not perfect, but should be less annoying for users:
+
+    let lastError;	
+		
+	function confirmEntry() {
+		let errEl = document.getElementById('err4-' + this.id);
+		
+		if (this.value) {
+			errEl.innerHTML = '';
+			lastError = '';
+		}
+		else if (lastError) {
+			lastError.focus();
+		}
+		else {
+			lastError = this;
+			errEl.innerHTML = 'The above field is required';
+		}
+	}
+
+I've created a Gist containing the above code, [both revisions being available here](https://gist.github.com/dexygen/3edb947c8ef30e3f4faa25969ba03e4a/revisions).
+                </div>
+				
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/tags">
+  ['foo','bar','baz'];
+</script>
+<script src="../../../../content-genr/upstaged/js/content-genr.js"></script>
+<script>
+	upstaged.run({
+		mdHolderQuerySel: '#mdHolder',
+		pathPrefix: "../../../../content-genr/upstaged/",
+		styles: [
+			'themes/dexygen.css',
+			'themes/code.css'
+		]
+	});
+</script>
+
+</body></html>
